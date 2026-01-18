@@ -1,0 +1,11 @@
+{
+  "name": "Downtown Office Building",
+  "description": "Commercial office building with 10 floors",
+  "budget": 500000,
+  "startDate": "2026-02-01T00:00:00.000Z",
+  "endDate": "2026-08-31T00:00:00.000Z",
+  "managerId": "af35a1ad-6260-4ab9-9cb8-9275df4ac70c",
+  "priority": "high",
+  "status": "planning",
+  "progress": 0
+}

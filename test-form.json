@@ -1,0 +1,99 @@
+{
+  "name": "Daily Safety Inspection",
+  "category": "safety",
+  "version": 1,
+  "fields": [
+    {
+      "id": "inspector_name",
+      "type": "text",
+      "label": "Inspector Name",
+      "placeholder": "Enter your name",
+      "required": true,
+      "validation": {
+        "minLength": 2,
+        "maxLength": 50
+      },
+      "properties": {
+        "gridWidth": 12
+      }
+    },
+    {
+      "id": "inspection_date",
+      "type": "date",
+      "label": "Inspection Date",
+      "required": true,
+      "properties": {
+        "gridWidth": 6
+      }
+    },
+    {
+      "id": "safety_equipment",
+      "type": "checkbox",
+      "label": "Safety Equipment Check",
+      "required": true,
+      "options": [
+        "Hard Hat",
+        "Safety Glasses",
+        "Steel-Toe Boots",
+        "High-Vis Vest"
+      ],
+      "properties": {
+        "gridWidth": 12
+      }
+    },
+    {
+      "id": "hazards_found",
+      "type": "select",
+      "label": "Hazards Found",
+      "required": false,
+      "options": [
+        "None",
+        "Electrical",
+        "Fall Risk",
+        "Chemical",
+        "Other"
+      ],
+      "properties": {
+        "gridWidth": 6
+      }
+    },
+    {
+      "id": "notes",
+      "type": "textarea",
+      "label": "Additional Notes",
+      "placeholder": "Enter any additional observations",
+      "required": false,
+      "validation": {
+        "maxLength": 500
+      },
+      "properties": {
+        "gridWidth": 12
+      }
+    }
+  ],
+  "settings": {
+    "requireGPS": true,
+    "requireSignature": true,
+    "allowOffline": true,
+    "emailNotifications": false,
+    "autoSubmit": false
+  },
+  "logic": [
+    {
+      "condition": {
+        "field": "hazards_found",
+        "operator": "notEquals",
+        "value": "None"
+      },
+      "actions": [
+        {
+          "type": "require",
+          "target": "notes"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "createdBy": "af35a1ad-6260-4ab9-9cb8-9275df4ac70c"
+  }
+}

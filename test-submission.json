@@ -1,0 +1,20 @@
+{
+  "formId": "696449863be4bd940a280a36",
+  "formVersion": 1,
+  "projectId": "b42ec04e-b39b-4af4-84b8-6bbdf3e3886a",
+  "workerId": "af35a1ad-6260-4ab9-9cb8-9275df4ac70c",
+  "data": {
+    "inspector_name": "John Smith",
+    "inspection_date": "2026-01-12",
+    "safety_equipment": ["Hard Hat", "Safety Glasses", "Steel-Toe Boots"],
+    "hazards_found": "None",
+    "notes": "All safety checks passed successfully."
+  },
+  "metadata": {
+    "location": {
+      "lat": 40.7128,
+      "lng": -74.006
+    },
+    "signature": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg..."
+  }
+}
