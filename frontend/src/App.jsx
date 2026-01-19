@@ -9,9 +9,11 @@ import WorkflowManagement from './pages/WorkflowManagement';
 import Reports from './pages/Reports';
 import Integrations from './pages/Integrations';
 
+const basename = import.meta.env.BASE_URL;
+
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <Routes>
         {/* Landing Page - Public */}
         <Route path="/" element={<LandingPage />} />
