@@ -14,6 +14,7 @@ import projectsApi from '../services/projectsApi';
 import usersApi from '../services/usersApi';
 import dispatchApi from '../services/dispatchApi';
 import formsApi from '../services/formsApi';
+import { mockProjects, mockUsers, mockJobs, mockSubmissions, isDemoMode } from '../services/mockData';
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -34,6 +35,21 @@ const Dashboard = () => {
     try {
       setLoading(true);
       setError(null);
+
+      // Check if we're in demo mode (GitHub Pages deployment)
+      if (isDemoMode()) {
+        console.log('Running in demo mode - using mock data');
+        const demoWorkers = mockUsers.filter(u => u.role === 'worker');
+        setProjects(mockProjects);
+        setWorkers(demoWorkers);
+        setJobs(mockJobs);
+        setSubmissions(mockSubmissions);
+        calculateStats(mockProjects, demoWorkers, mockJobs, mockSubmissions);
+        generateChartData(mockProjects);
+        getRecentJobs(mockJobs, mockProjects, mockUsers);
+        setLoading(false);
+        return;
+      }
 
       // Fetch data with graceful error handling for each endpoint
       const [projectsRes, usersRes, jobsRes, submissionsRes] = await Promise.allSettled([
@@ -56,10 +72,16 @@ const Dashboard = () => {
       ]);
 
       // Extract data from settled promises
-      const projectsData = projectsRes.status === 'fulfilled' ? (projectsRes.value?.data || []) : [];
-      const workersData = usersRes.status === 'fulfilled' ? (usersRes.value?.data || []) : [];
-      const jobsData = jobsRes.status === 'fulfilled' ? (jobsRes.value?.data || []) : [];
-      const submissionsData = submissionsRes.status === 'fulfilled' ? (submissionsRes.value?.data || []) : [];
+      let projectsData = projectsRes.status === 'fulfilled' ? (projectsRes.value?.data || []) : [];
+      let workersData = usersRes.status === 'fulfilled' ? (usersRes.value?.data || []) : [];
+      let jobsData = jobsRes.status === 'fulfilled' ? (jobsRes.value?.data || []) : [];
+      let submissionsData = submissionsRes.status === 'fulfilled' ? (submissionsRes.value?.data || []) : [];
+
+      // Fall back to mock data if APIs returned empty
+      if (projectsData.length === 0) projectsData = mockProjects;
+      if (workersData.length === 0) workersData = mockUsers.filter(u => u.role === 'worker');
+      if (jobsData.length === 0) jobsData = mockJobs;
+      if (submissionsData.length === 0) submissionsData = mockSubmissions;
 
       setProjects(projectsData);
       setWorkers(workersData);

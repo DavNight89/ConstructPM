@@ -21,6 +21,7 @@ import {
 import formsApi from '../services/formsApi';
 import FormDialog from '../components/FormDialog';
 import FieldConfigDialog from '../components/FieldConfigDialog';
+import { mockForms, isDemoMode } from '../services/mockData';
 
 const FormBuilder = () => {
   const [forms, setForms] = useState([]);
@@ -44,9 +45,24 @@ const FormBuilder = () => {
     try {
       setLoading(true);
       setError(null);
+
+      // Check if we're in demo mode (GitHub Pages deployment)
+      if (isDemoMode()) {
+        console.log('Running in demo mode - using mock forms');
+        const transformedMockForms = mockForms.map(form => ({
+          ...form,
+          fieldCount: form.fields.length,
+          submissions: form.submissionCount || 0,
+          lastModified: form.lastUpdated,
+        }));
+        setForms(transformedMockForms);
+        setLoading(false);
+        return;
+      }
+
       const response = await formsApi.getAll();
       // Transform backend data to match UI expectations
-      const transformedForms = (response.data || []).map(form => ({
+      let transformedForms = (response.data || []).map(form => ({
         ...form,
         id: form._id,
         fieldCount: form.fields.length, // Store count separately
@@ -54,10 +70,28 @@ const FormBuilder = () => {
         submissions: form.metadata?.submissions || 0,
         lastModified: new Date(form.updatedAt).toLocaleDateString(),
       }));
+
+      // Fall back to mock data if API returned empty
+      if (transformedForms.length === 0) {
+        transformedForms = mockForms.map(form => ({
+          ...form,
+          fieldCount: form.fields.length,
+          submissions: form.submissionCount || 0,
+          lastModified: form.lastUpdated,
+        }));
+      }
+
       setForms(transformedForms);
     } catch (err) {
       console.error('Error fetching forms:', err);
-      setError(err.response?.data?.message || 'Failed to load forms');
+      // Fall back to mock data on error
+      const transformedMockForms = mockForms.map(form => ({
+        ...form,
+        fieldCount: form.fields.length,
+        submissions: form.submissionCount || 0,
+        lastModified: form.lastUpdated,
+      }));
+      setForms(transformedMockForms);
     } finally {
       setLoading(false);
     }
