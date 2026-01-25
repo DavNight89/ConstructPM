@@ -92,13 +92,13 @@ const LandingPage = () => {
             </div>
             <div className="flex items-center gap-4">
               <Link
-                to="/app"
+                to="/login"
                 className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
               >
                 Sign In
               </Link>
               <Link
-                to="/app"
+                to="/login"
                 className="px-4 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
               >
                 Get Started
@@ -127,7 +127,7 @@ const LandingPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/app"
+                  to="/login"
                   className="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors"
                 >
                   Start Free Trial
@@ -402,7 +402,7 @@ const LandingPage = () => {
                 </li>
               </ul>
               <Link
-                to="/app"
+                to="/login"
                 className="block w-full text-center px-4 py-2 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Get Started
@@ -443,7 +443,7 @@ const LandingPage = () => {
                 </li>
               </ul>
               <Link
-                to="/app"
+                to="/login"
                 className="block w-full text-center px-4 py-2 bg-white rounded-lg font-medium text-primary-600 hover:bg-gray-100 transition-colors"
               >
                 Start Free Trial
@@ -502,7 +502,7 @@ const LandingPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/app"
+              to="/login"
               className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors text-lg"
             >
               Start Your Free Trial
