@@ -68,13 +68,6 @@ const LandingPage = () => {
     }
   ];
 
-  const stats = [
-    { value: '40%', label: 'Less time on paperwork' },
-    { value: '25%', label: 'Faster project completion' },
-    { value: '99.9%', label: 'Uptime reliability' },
-    { value: '24/7', label: 'Support available' }
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -117,7 +110,7 @@ const LandingPage = () => {
                 <HardHat className="h-4 w-4" />
                 Built for Construction Professionals
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+              <h1 className="text-6xl lg:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 Manage Projects,
                 <span className="text-primary-600"> Not Paperwork</span>
               </h1>
@@ -218,20 +211,6 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-12 bg-primary-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-primary-200 text-sm">{stat.label}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -414,37 +393,37 @@ const LandingPage = () => {
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-orange-400 text-white text-sm font-medium rounded-full">
                 Most Popular
               </div>
-              <div className="text-lg font-semibold text-white mb-2">Professional</div>
+              <div className="text-lg font-semibold text-blue mb-2">Professional</div>
               <div className="text-primary-200 text-sm mb-4">For growing construction companies</div>
               <div className="mb-6">
-                <span className="text-4xl font-bold text-white">$149</span>
+                <span className="text-4xl font-bold text-orange">$149</span>
                 <span className="text-primary-200">/month</span>
               </div>
               <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-2 text-sm text-white">
+                <li className="flex items-center gap-2 text-sm text-orange">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   Unlimited projects
                 </li>
-                <li className="flex items-center gap-2 text-sm text-white">
+                <li className="flex items-center gap-2 text-sm text-orange">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   50 team members
                 </li>
-                <li className="flex items-center gap-2 text-sm text-white">
+                <li className="flex items-center gap-2 text-sm text-orange">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   Advanced form builder
                 </li>
-                <li className="flex items-center gap-2 text-sm text-white">
+                <li className="flex items-center gap-2 text-sm text-orange">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   Real-time dispatch
                 </li>
-                <li className="flex items-center gap-2 text-sm text-white">
+                <li className="flex items-center gap-2 text-sm tex-red-600">
                   <CheckCircle className="h-5 w-5 text-green-400" />
                   Priority support
                 </li>
               </ul>
               <Link
                 to="/login"
-                className="block w-full text-center px-4 py-2 bg-white rounded-lg font-medium text-primary-600 hover:bg-gray-100 transition-colors"
+                className="block w-full text-center border border-gray-300 rounded-lg px-4 py-2 bg-white rounded-lg font-medium text-primary-600 hover:bg-gray-100 transition-colors"
               >
                 Start Free Trial
               </Link>

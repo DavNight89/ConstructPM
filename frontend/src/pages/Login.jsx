@@ -113,7 +113,7 @@ const Login = () => {
                 >
                   <div className="flex items-start">
                     <div className={`${option.color} p-2 rounded-lg`}>
-                      <Icon className="h-6 w-6 text-white" />
+                      <Icon className="h-6 w-6 text-green-600" />
                     </div>
                     <div className="ml-3 flex-1">
                       <h3 className="font-semibold text-gray-900">{option.label}</h3>
@@ -140,9 +140,9 @@ const Login = () => {
           <button
             onClick={handleLogin}
             disabled={!selectedRole}
-            className={`w-full py-3 px-4 rounded-lg font-medium flex items-center justify-center transition-all ${
+            className={`w-full py-3 px-4 border border-gray-300 rounded-lg rounded-lg font-medium flex items-center justify-center transition-all ${
               selectedRole
-                ? 'bg-primary-600 text-white hover:bg-primary-700'
+                ? 'bg-primary-600 text-green-600 hover:bg-primary-700'
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
             }`}
           >
@@ -162,7 +162,7 @@ const Login = () => {
             <p className="text-sm text-blue-700">
               This is a demonstration of ConstructPM's role-based access control. Each role has
               different permissions and sees different features. In production, users would
-              log in with their credentials and their role would be assigned by an administrator.
+              log in with credentials and the user's role would be assigned by an administrator.
             </p>
           </div>
 
